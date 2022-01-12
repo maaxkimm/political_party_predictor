@@ -11,6 +11,9 @@
 
 # Feature Selection Plots
 
+<img width="358" alt="Screen Shot 2022-01-11 at 9 36 35 PM" src="https://user-images.githubusercontent.com/68135908/149070875-d84a5fa7-d945-4237-9690-542e66168661.png">
+<img width="651" alt="Screen Shot 2022-01-11 at 9 36 06 PM" src="https://user-images.githubusercontent.com/68135908/149070879-b3c58574-629c-41e0-a592-7d0ea75634cf.png">
+<img width="684" alt="Screen Shot 2022-01-11 at 9 36 19 PM" src="https://user-images.githubusercontent.com/68135908/149070881-9ef70fe3-1922-47ca-9fef-f87e1c05338e.png">
 
 # Modeling Process
 - With the model, I used a logistic regression model with the vaccination per capita daily rate (i.e. difference between each day count divided by POPESTIMATE2020 for both partially and fully), the cases per capita daily rate (i.e. difference between each day divided by POPESTIMATE2020), tests per capita daily rate (i.e. difference between each day divided by POPESTIMATE2020), and the deaths per capita daily rate (i.e. difference between each day divided by POPESTIMATE2020) as the inputs to “predict” whether a given state is Democratic: 0 or Republican: 1 as the output. For context, the last two features were added after the baseline model suffered from low training and validation accuracy; thus, I pivoted the hypothesis to be slightly more specific.
@@ -18,6 +21,7 @@
 - I chose to use a logistic regression model because I'm predicting discrete values to understand the possible relationship between safety protocols and COVID-19’s impact and whether a given state is Republican. I chose to use the default, cross-entropy loss, as I’ve seen the infeasibility of using L2 loss/MSE for logistic regression models and for my model. I split the mask-usage data into training and test sets. Then, I used the training data when designing the model and used cross-validation to test generalization.
 
 # Performance & Testing
+<img width="639" alt="Screen Shot 2022-01-11 at 9 37 06 PM" src="https://user-images.githubusercontent.com/68135908/149070849-333f2e41-906f-49e3-9602-bc1241f91374.png">
 - I first measured model performance comparing the ROC curves of the baseline and the improved model.
 
 - I trained the logistic regression model, and the resulting training accuracy was 65%, relatively higher than the baseline logistic regression model which would attain 51%. I created a ROC Curve plot to analyze and compare the predictive performance of the two models. The ROC curve of the baseline model is closer to a constant line of slope 1; it shows that the baseline model is rather a random classifier, with no predictive value. In contrast, the ROC Curve of the improved model is smoother where the curve is closer to the top-left corner. This indicates that it has a better performance compared to the baseline, because the curve shows that the false positive rate is lower and the true positive rate is higher. The precision of the improved model was 0.628, implying that 62.8% of the positive predictions were correct predictions. The recall of the improved model was 0.71, implying that 71% of the positive predictions of all observations were correct. Although it is evident that the improved model performs better than the baseline model, the ROC curve looks less like what the ideal, well-performing model would look like. Thus, the model result isn’t necessarily good, and this motivates a further model improvement in the future.
