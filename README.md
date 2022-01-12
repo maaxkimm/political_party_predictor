@@ -1,17 +1,18 @@
-### Machine Learning Autoregressive Logistic Regression Model
+# Machine Learning Autoregressive Logistic Regression Model
+
 # Hypothesis and Model
 - Safety protocols, specifically the vaccinations daily rate per capita and tests daily rate per capita, are positively correlated with whether a given state is Republican, and thus, the extent of the impact of COVID-19, measured by the cases and deaths daily rate per capita, are negatively correlated with whether a given state is Republican.
 
-#Datasets
+# Datasets
 - I extracted “presidential_elections.csv” data from https://sda.berkeley.edu/sdaweb/analysis/?dataset=gss16, which contained data on how the 50 states plus Washington D.C. voted in presidential elections between 1972 to 2016 and appended the presidential election data from 2020. Additionally, I used the vaccinations data, cases data, and imported two more external datasets: https://github.com/nytimes/covid-19-data for the time-series death data and https://github.com/govex/COVID-19/tree/master/data_tables/testing_data for the time-series total tests done data. I utilized each of the datasets to generate the 5 features mentioned in the hypothesis. Ultimately, I planned to validate or invalidate the hypothesis by reading the model weights and odds ratios and using them to accept or reject the hypothesis based on their sign. I will accept the hypothesis if all 5 model weights and odd ratios align with the hypothesis and reject the hypothesis if at least one of them does not align with the hypothesis.
 
-#Result
+# Result
 - Although I chose to accept the hypothesis based on the signs of the model coefficients and odds ratios from the model, I recognize the limitations of the hypothesis because I chose to leave out the magnitudes of these ratios in assessing the hypothesis since I didn’t hypothesize about the strength of the correlations between the features and the political ties of a state. The model coefficients and odds ratios come from the equation: f(x) = 1 / (1 + e-(.70 - 24.35x1-20.82x2+362.90x3+8.92x4-173.16x5)). After the intercept, from left to right, the order of the features were: people_fully_vaccinated, people_partially_paccinated, daily_case, deaths_diff_per_capita, and the tests_diff_per_capita. After extracting the signs of the coefficients and odds ratios of the model, I concluded that the results align with the hypothesis.
 
-#Feature Selection Plots
+# Feature Selection Plots
 
 
-#Modeling Process
+# Modeling Process
 - With the model, I used a logistic regression model with the vaccination per capita daily rate (i.e. difference between each day count divided by POPESTIMATE2020 for both partially and fully), the cases per capita daily rate (i.e. difference between each day divided by POPESTIMATE2020), tests per capita daily rate (i.e. difference between each day divided by POPESTIMATE2020), and the deaths per capita daily rate (i.e. difference between each day divided by POPESTIMATE2020) as the inputs to “predict” whether a given state is Democratic: 0 or Republican: 1 as the output. For context, the last two features were added after the baseline model suffered from low training and validation accuracy; thus, I pivoted the hypothesis to be slightly more specific.
 
 - I chose to use a logistic regression model because I'm predicting discrete values to understand the possible relationship between safety protocols and COVID-19’s impact and whether a given state is Republican. I chose to use the default, cross-entropy loss, as I’ve seen the infeasibility of using L2 loss/MSE for logistic regression models and for my model. I split the mask-usage data into training and test sets. Then, I used the training data when designing the model and used cross-validation to test generalization.
