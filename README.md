@@ -22,6 +22,7 @@
 
 # Performance & Testing
 <img width="639" alt="Screen Shot 2022-01-11 at 9 37 06 PM" src="https://user-images.githubusercontent.com/68135908/149070849-333f2e41-906f-49e3-9602-bc1241f91374.png">
+
 - I first measured model performance comparing the ROC curves of the baseline and the improved model.
 
 - I trained the logistic regression model, and the resulting training accuracy was 65%, relatively higher than the baseline logistic regression model which would attain 51%. I created a ROC Curve plot to analyze and compare the predictive performance of the two models. The ROC curve of the baseline model is closer to a constant line of slope 1; it shows that the baseline model is rather a random classifier, with no predictive value. In contrast, the ROC Curve of the improved model is smoother where the curve is closer to the top-left corner. This indicates that it has a better performance compared to the baseline, because the curve shows that the false positive rate is lower and the true positive rate is higher. The precision of the improved model was 0.628, implying that 62.8% of the positive predictions were correct predictions. The recall of the improved model was 0.71, implying that 71% of the positive predictions of all observations were correct. Although it is evident that the improved model performs better than the baseline model, the ROC curve looks less like what the ideal, well-performing model would look like. Thus, the model result isn’t necessarily good, and this motivates a further model improvement in the future.
