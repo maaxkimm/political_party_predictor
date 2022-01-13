@@ -1,5 +1,16 @@
 # Machine Learning Autoregressive Logistic Regression Model
 
+# Technologies & Libraries I Used
+- Python
+- Jupyter Notebook
+- Pandas
+- Scipy
+- Scikit-learn
+- GeoPy
+- NumPy
+- Seaborn
+- Plotly
+
 # Hypothesis and Model
 - Safety protocols, specifically the vaccinations daily rate per capita and tests daily rate per capita, are positively correlated with whether a given state is Republican, and thus, the extent of the impact of COVID-19, measured by the cases and deaths daily rate per capita, are negatively correlated with whether a given state is Republican.
 
